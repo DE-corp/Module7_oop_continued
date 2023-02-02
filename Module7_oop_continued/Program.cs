@@ -2,36 +2,48 @@
 
 namespace Module7_oop_continued
 {
-	class Obj
-	{
-		private string name;
-		private string owner;
-		private int length;
-		private int count;
+    class BaseClass
+    {
+        protected string Name;
 
-		public Obj(string name, string ownerName, int objLength, int count)
-		{
-			this.name = name;
-			owner = ownerName;
-			length = objLength;
-			this.count = count;
-		}
-
-		public void GetData()
+        public BaseClass(string name)
         {
-            Console.WriteLine(name);
-			Console.WriteLine(owner);
-			Console.WriteLine(length);
-			Console.WriteLine(count);
-		}
-	}
+            Name = name;
+        }
+    }
 
-	class Program
+    class DerivedClass : BaseClass
+    {
+        public string Description;
+
+        public int Counter;
+
+        public DerivedClass(string Name, string Description) : base(Name)
+        {
+            this.Description = Description;   
+        }
+        public DerivedClass(string Name, string Description, int Counter) : base(Name)
+        {
+            this.Description = Description;
+            this.Counter = Counter;
+        }
+
+        public void Show()
+        {
+            Console.WriteLine($"Name: {base.Name}");
+            Console.WriteLine($"Description: {Description}");
+            Console.WriteLine($"Counter: {Counter}");
+        }
+    }
+
+    class Program
     {
         static void Main(string[] args)
         {
-			var obj = new Obj("Имя", "Владелец", 100, 3);
-			obj.GetData();
+            var DerivedClass = new DerivedClass("Дмитрий", "Dmitry", 100);
+            DerivedClass.Show();
+
+            Console.ReadLine();
 		}
     }
 }
