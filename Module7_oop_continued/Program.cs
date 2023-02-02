@@ -2,29 +2,51 @@
 
 namespace Module7_oop_continued
 {
-    class Employee
+    class Food
     {
-        public string Name;
-        public int Age;
-        public int Salary;
+
     }
 
-    class ProjectManager: Employee
+    class Fruits : Food
     {
-        public string ProjectName;
+        
     }
 
-    class Developer: Employee
+    class Vegetables : Food
     {
-        public string ProgrammingLanguage;
+
+    }
+
+    class Apple : Fruits
+    {
+
+    }
+
+    class Banana : Fruits
+    {
+
+    }
+
+    class Pear : Fruits
+    {
+
+    }
+
+    class Potato : Vegetables
+    {
+
+    }
+
+    class Carrot : Vegetables
+    {
+
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            var Developer = new Developer();
-            Developer.ProgrammingLanguage = "C#";
+            var Pear = new Pear();
         }
     }
 }
