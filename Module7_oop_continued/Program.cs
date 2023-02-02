@@ -2,51 +2,36 @@
 
 namespace Module7_oop_continued
 {
-    class Food
-    {
+	class Obj
+	{
+		private string name;
+		private string owner;
+		private int length;
+		private int count;
 
-    }
+		public Obj(string name, string ownerName, int objLength, int count)
+		{
+			this.name = name;
+			owner = ownerName;
+			length = objLength;
+			this.count = count;
+		}
 
-    class Fruits : Food
-    {
-        
-    }
+		public void GetData()
+        {
+            Console.WriteLine(name);
+			Console.WriteLine(owner);
+			Console.WriteLine(length);
+			Console.WriteLine(count);
+		}
+	}
 
-    class Vegetables : Food
-    {
-
-    }
-
-    class Apple : Fruits
-    {
-
-    }
-
-    class Banana : Fruits
-    {
-
-    }
-
-    class Pear : Fruits
-    {
-
-    }
-
-    class Potato : Vegetables
-    {
-
-    }
-
-    class Carrot : Vegetables
-    {
-
-    }
-
-    class Program
+	class Program
     {
         static void Main(string[] args)
         {
-            var Pear = new Pear();
-        }
+			var obj = new Obj("Имя", "Владелец", 100, 3);
+			obj.GetData();
+		}
     }
 }
