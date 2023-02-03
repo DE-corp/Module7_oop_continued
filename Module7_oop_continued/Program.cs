@@ -10,6 +10,11 @@ namespace Module7_oop_continued
         {
             Name = name;
         }
+
+        public virtual void Display()
+        {
+            Console.WriteLine("Метод класса BaseClass");
+        }
     }
 
     class DerivedClass : BaseClass
@@ -28,11 +33,9 @@ namespace Module7_oop_continued
             this.Counter = Counter;
         }
 
-        public void Show()
+        public override void Display()
         {
-            Console.WriteLine($"Name: {base.Name}");
-            Console.WriteLine($"Description: {Description}");
-            Console.WriteLine($"Counter: {Counter}");
+            Console.WriteLine("Метод класса DerivedClass");
         }
     }
 
@@ -41,7 +44,12 @@ namespace Module7_oop_continued
         static void Main(string[] args)
         {
             var DerivedClass = new DerivedClass("Дмитрий", "Dmitry", 100);
-            DerivedClass.Show();
+            var BaseClass = new BaseClass("Дмитрий");
+            BaseClass baseClass = (BaseClass)DerivedClass;
+
+            DerivedClass.Display();
+            BaseClass.Display();
+            baseClass.Display();
 
             Console.ReadLine();
 		}
