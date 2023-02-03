@@ -2,41 +2,43 @@
 
 namespace Module7_oop_continued
 {
-    class BaseClass
+    class A
     {
-        protected string Name;
-
-        public BaseClass(string name)
+    public virtual void Display()
         {
-            Name = name;
-        }
-
-        public virtual void Display()
-        {
-            Console.WriteLine("Метод класса BaseClass");
+            Console.WriteLine("A");
         }
     }
 
-    class DerivedClass : BaseClass
+    class B : A
     {
-        public string Description;
-
-        public int Counter;
-
-        public DerivedClass(string Name, string Description) : base(Name)
+        public new void Display()
         {
-            this.Description = Description;
+            Console.WriteLine("B");
         }
-        public DerivedClass(string Name, string Description, int Counter) : base(Name)
-        {
-            this.Description = Description;
-            this.Counter = Counter;
-        }
+    }
 
+    class C : A
+    {
         public override void Display()
         {
-            base.Display();
-            Console.WriteLine("Метод класса DerivedClass");
+            Console.WriteLine("C");
+        }
+    }
+
+    class D : B
+    {
+        public new void Display()
+        {
+            Console.WriteLine("D");
+        }
+    }
+
+    class E : C
+    {
+        public new void Display()
+        {
+            Console.WriteLine("E");
         }
     }
 
@@ -44,9 +46,17 @@ namespace Module7_oop_continued
     {
         static void Main(string[] args)
         {
-            DerivedClass obj = new DerivedClass("Дмитрий", "Описание");
-            obj.Display();
+            A a = new A();
+            B b = new B();
+            C c = new C();
+            D d = new D();
+            E e = new E();
 
+            a.Display();
+            b.Display();
+            c.Display();
+            d.Display();
+            e.Display();
 
             Console.ReadLine();
         }
