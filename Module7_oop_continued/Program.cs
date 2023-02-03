@@ -5,37 +5,45 @@ namespace Module7_oop_continued
     class BaseClass
     {
         protected string Name;
+        public virtual int Counter {get; set;}
 
         public BaseClass(string name)
         {
             Name = name;
         }
 
-        public virtual void Display()
-        {
-            Console.WriteLine("Метод класса BaseClass");
-        }
     }
 
     class DerivedClass : BaseClass
     {
         public string Description;
+        private int counter;
+        public override int Counter 
+        {
+            get
+            {
+                return counter;
+            }
 
-        public int Counter;
+            set
+            {
+                if (value > 0)
+                {
+                    counter = value;
+                }
+            }
+        }
 
         public DerivedClass(string Name, string Description) : base(Name)
         {
             this.Description = Description;   
         }
-        public DerivedClass(string Name, string Description, int Counter) : base(Name)
+        
+        public void Show()
         {
-            this.Description = Description;
-            this.Counter = Counter;
-        }
-
-        public override void Display()
-        {
-            Console.WriteLine("Метод класса DerivedClass");
+            Console.WriteLine($"Name: {base.Name}");
+            Console.WriteLine($"Description: {Description}");
+            Console.WriteLine($"Counter: {counter}");
         }
     }
 
@@ -43,13 +51,9 @@ namespace Module7_oop_continued
     {
         static void Main(string[] args)
         {
-            var DerivedClass = new DerivedClass("Дмитрий", "Dmitry", 100);
-            var BaseClass = new BaseClass("Дмитрий");
-            BaseClass baseClass = (BaseClass)DerivedClass;
-
-            DerivedClass.Display();
-            BaseClass.Display();
-            baseClass.Display();
+            var derivedClass = new DerivedClass("Дмитрий", "Dmitry");
+            derivedClass.Counter = -3;
+            derivedClass.Show();
 
             Console.ReadLine();
 		}
