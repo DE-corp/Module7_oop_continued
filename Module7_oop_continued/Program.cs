@@ -5,45 +5,38 @@ namespace Module7_oop_continued
     class BaseClass
     {
         protected string Name;
-        public virtual int Counter {get; set;}
 
         public BaseClass(string name)
         {
             Name = name;
         }
 
+        public virtual void Display()
+        {
+            Console.WriteLine("Метод класса BaseClass");
+        }
     }
 
     class DerivedClass : BaseClass
     {
         public string Description;
-        private int counter;
-        public override int Counter 
-        {
-            get
-            {
-                return counter;
-            }
 
-            set
-            {
-                if (value > 0)
-                {
-                    counter = value;
-                }
-            }
-        }
+        public int Counter;
 
         public DerivedClass(string Name, string Description) : base(Name)
         {
-            this.Description = Description;   
+            this.Description = Description;
         }
-        
-        public void Show()
+        public DerivedClass(string Name, string Description, int Counter) : base(Name)
         {
-            Console.WriteLine($"Name: {base.Name}");
-            Console.WriteLine($"Description: {Description}");
-            Console.WriteLine($"Counter: {counter}");
+            this.Description = Description;
+            this.Counter = Counter;
+        }
+
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine("Метод класса DerivedClass");
         }
     }
 
@@ -51,11 +44,11 @@ namespace Module7_oop_continued
     {
         static void Main(string[] args)
         {
-            var derivedClass = new DerivedClass("Дмитрий", "Dmitry");
-            derivedClass.Counter = -3;
-            derivedClass.Show();
+            DerivedClass obj = new DerivedClass("Дмитрий", "Описание");
+            obj.Display();
+
 
             Console.ReadLine();
-		}
+        }
     }
 }
