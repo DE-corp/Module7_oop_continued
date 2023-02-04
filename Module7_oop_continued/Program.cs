@@ -2,24 +2,26 @@
 
 namespace Module7_oop_continued
 {
-    class Obj
+    class IndexingClass
     {
-        public int Value;
+        private int[] array;
 
-        public static Obj operator +(Obj a, Obj b)
+        public IndexingClass(int[] array)
         {
-            return new Obj
-            {
-                Value = a.Value + b.Value
-            };
+            this.array = array;
         }
 
-        public static Obj operator -(Obj a, Obj b)
+        public int this[int index]
         {
-            return new Obj
+            get
             {
-                Value = a.Value - b.Value
-            };
+                return array[index];
+            }
+
+            set
+            {
+                array[index] = value;
+            }
         }
     }
 
@@ -27,13 +29,11 @@ namespace Module7_oop_continued
     {
         static void Main(string[] args)
         {
-            var firstObj = new Obj { Value = 3};
-            var secondObj = new Obj { Value = 7 };
-            Obj c = firstObj + secondObj;
-            Obj d = firstObj - secondObj;
+            int[] array = new int[] { 2, 3, 5, 6 };
+            IndexingClass IndClass = new IndexingClass(array);
 
-            Console.WriteLine(c.Value);
-            Console.WriteLine(d.Value);
+            int el = IndClass[2];
+            Console.WriteLine(el);
 
             Console.ReadLine();
         }
