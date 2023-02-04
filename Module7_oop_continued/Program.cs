@@ -2,43 +2,24 @@
 
 namespace Module7_oop_continued
 {
-    class A
+    class Obj
     {
-    public virtual void Display()
-        {
-            Console.WriteLine("A");
-        }
-    }
+        public int Value;
 
-    class B : A
-    {
-        public new void Display()
+        public static Obj operator +(Obj a, Obj b)
         {
-            Console.WriteLine("B");
+            return new Obj
+            {
+                Value = a.Value + b.Value
+            };
         }
-    }
 
-    class C : A
-    {
-        public override void Display()
+        public static Obj operator -(Obj a, Obj b)
         {
-            Console.WriteLine("C");
-        }
-    }
-
-    class D : B
-    {
-        public new void Display()
-        {
-            Console.WriteLine("D");
-        }
-    }
-
-    class E : C
-    {
-        public new void Display()
-        {
-            Console.WriteLine("E");
+            return new Obj
+            {
+                Value = a.Value - b.Value
+            };
         }
     }
 
@@ -46,17 +27,13 @@ namespace Module7_oop_continued
     {
         static void Main(string[] args)
         {
-            A a = new A();
-            B b = new B();
-            C c = new C();
-            D d = new D();
-            E e = new E();
+            var firstObj = new Obj { Value = 3};
+            var secondObj = new Obj { Value = 7 };
+            Obj c = firstObj + secondObj;
+            Obj d = firstObj - secondObj;
 
-            a.Display();
-            b.Display();
-            c.Display();
-            d.Display();
-            e.Display();
+            Console.WriteLine(c.Value);
+            Console.WriteLine(d.Value);
 
             Console.ReadLine();
         }
