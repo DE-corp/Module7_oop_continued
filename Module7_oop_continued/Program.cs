@@ -2,38 +2,45 @@
 
 namespace Module7_oop_continued
 {
-    class IndexingClass
+    abstract class ComputerPart
     {
-        private int[] array;
+        public abstract void Work();
+    }
 
-        public IndexingClass(int[] array)
+    class Processor : ComputerPart
+    {
+        public override void Work()
         {
-            this.array = array;
-        }
-
-        public int this[int index]
-        {
-            get
-            {
-                return array[index];
-            }
-
-            set
-            {
-                array[index] = value;
-            }
+            Console.WriteLine("Работает процессор");
         }
     }
 
+    class MotherBoard : ComputerPart
+    {
+        public override void Work()
+        {
+            Console.WriteLine("Работает материнская карта");
+        }
+    }
+
+    class GraphicCard : ComputerPart
+    {
+        public override void Work()
+        {
+            Console.WriteLine("Используется GPU");
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            int[] array = new int[] { 2, 3, 5, 6 };
-            IndexingClass IndClass = new IndexingClass(array);
+            var Gpu = new GraphicCard();
+            var MBoard = new MotherBoard();
+            var Cpu = new Processor();
 
-            int el = IndClass[2];
-            Console.WriteLine(el);
+            Cpu.Work();
+            MBoard.Work();
+            Gpu.Work();
 
             Console.ReadLine();
         }
