@@ -2,12 +2,24 @@
 
 namespace Module7_oop_continued
 {
-	class Record<T1, T2>
-    {
-		public T1 Id;
-		public T2 Value;
-		public DateTime Date;
+	class ElectricEngine { }
 
+	class GasEngine { }
+
+	class Battery { }
+
+	class Differential { }
+
+	class Wheel { }
+
+	class Car<T1>
+	{
+		public T1 Engine;
+
+		public virtual void ChangePart<T2>(T2 newPart)
+		{
+
+		}
 	}
 
 	class Program
