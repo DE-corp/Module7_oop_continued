@@ -2,29 +2,19 @@
 
 namespace Module7_oop_continued
 {
-	class Car<T>
+	class Record<T1, T2>
     {
-		public T Engine;
+		public T1 Id;
+		public T2 Value;
+		public DateTime Date;
 
 	}
-
-	class ElectricEngine
-    {
-
-    }
-
-	class GasEngine
-    {
-		public string str = "Бензин";
-    }
 
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			var car = new Car<GasEngine>();
-			var car2 = new Car<ElectricEngine>();
-
+			
             Console.ReadLine();
 		}
 	}
