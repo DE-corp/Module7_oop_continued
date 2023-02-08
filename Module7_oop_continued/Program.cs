@@ -2,31 +2,36 @@
 
 namespace Module7_oop_continued
 {
-	class ElectricEngine { }
+	class Engine {}
 
-	class GasEngine { }
+	class ElectricEngine: Engine { }
 
-	class Battery { }
+	class GasEngine: Engine { }
 
-	class Differential { }
+	class Part { }
 
-	class Wheel { }
+	class Battery: Part { }
 
-	class Car<T1>
+	class Differential : Part { }
+
+	class Wheel : Part { }
+
+	class Car<T> where T: Engine
 	{
-		public T1 Engine;
+		public T Engine;
 
-		public virtual void ChangePart<T2>(T2 newPart)
+		public virtual void ChangePart<T2>(T2 newPart) where T2: Part
 		{
 
 		}
+
 	}
 
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			
+
             Console.ReadLine();
 		}
 	}
