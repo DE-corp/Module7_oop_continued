@@ -2,52 +2,36 @@
 
 namespace Module7_oop_continued
 {
-	abstract class Engine {}
-
-	class ElectricEngine: Engine { }
-
-	class GasEngine: Engine { }
-
-	abstract class Part { }
-
-	class Battery: Part { }
-
-	class Differential : Part { }
-
-	class Wheel : Part { }
-
-	abstract class Car<TEngine> where TEngine : Engine
-	{
-		public TEngine Engine;
-
-		public virtual void ChangePart<TPart>(TPart newPart) where TPart : Part
-		{
-
-		}
-
-	}
-
-	class ElectricCar: Car<ElectricEngine> 
-	{
-		public override void ChangePart<TPart>(TPart newPart)
-		{
-
-		}
-	}
-
-	class GasCar : Car<GasEngine> 
-	{
-		public override void ChangePart<TPart>(TPart newPart)
-		{
-
-		}
-	}
 
 	class Program
 	{
 		static void Main(string[] args)
 		{
+			var (client, ProductItem, deliveryData) = ConsoleInterface.Start();
 
+            if(deliveryData.DeliveryType == 1)
+            {
+                var order = new Order<ElectronicDelivery>(new ElectronicDelivery(deliveryData.Address, client.Email));
+                order.GetInfo(client.Name);
+                
+            }
+            else if (deliveryData.DeliveryType == 2)
+            {
+                if (ProductItem == "Каско")
+                {
+                    var order = new Order<СourierDelivery>(new СourierDelivery(deliveryData.Address, client.Phone));
+                    order.GetInfo(client.Name);
+                }
+                else
+                    Console.WriteLine("Доставка данного продукта временно не доступна, попробуйте позже..");
+            }
+            else
+            {
+                var order = new Order<OfficeDelivery>(new OfficeDelivery());
+                order.GetInfo(client.Name);
+            }
+
+            Console.WriteLine("Спасибо за сотрудничество. Безаварийного года!");
             Console.ReadLine();
 		}
 	}
