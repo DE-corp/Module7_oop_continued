@@ -16,11 +16,11 @@ namespace Module7_oop_continued
 
 	class Wheel : Part { }
 
-	class Car<T> where T: Engine
+	class Car<TEngine> where TEngine : Engine
 	{
-		public T Engine;
+		public TEngine Engine;
 
-		public virtual void ChangePart<T2>(T2 newPart) where T2: Part
+		public virtual void ChangePart<TPart>(TPart newPart) where TPart : Part
 		{
 
 		}
