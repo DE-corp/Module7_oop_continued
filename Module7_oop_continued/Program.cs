@@ -2,13 +2,13 @@
 
 namespace Module7_oop_continued
 {
-	class Engine {}
+	abstract class Engine {}
 
 	class ElectricEngine: Engine { }
 
 	class GasEngine: Engine { }
 
-	class Part { }
+	abstract class Part { }
 
 	class Battery: Part { }
 
@@ -16,7 +16,7 @@ namespace Module7_oop_continued
 
 	class Wheel : Part { }
 
-	class Car<TEngine> where TEngine : Engine
+	abstract class Car<TEngine> where TEngine : Engine
 	{
 		public TEngine Engine;
 
@@ -25,6 +25,22 @@ namespace Module7_oop_continued
 
 		}
 
+	}
+
+	class ElectricCar: Car<ElectricEngine> 
+	{
+		public override void ChangePart<TPart>(TPart newPart)
+		{
+
+		}
+	}
+
+	class GasCar : Car<GasEngine> 
+	{
+		public override void ChangePart<TPart>(TPart newPart)
+		{
+
+		}
 	}
 
 	class Program
